@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CILS B1 · Studio Italiano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --paper: #FAF7F0;
+  --paper-dim: #F1ECE0;
+  --ink: #2A2724;
+  --ink-soft: #6B655C;
+  --rule: #DDD5C4;
+  --blue: #2B4C7E;
+  --blue-soft: #E4EAF3;
+  --pink: #B84A62;
+  --pink-soft: #F5E5E9;
+  --green: #4C7A5E;
+  --green-soft: #E4EEE8;
+  --amber: #B8823A;
+  --amber-soft: #F5EBDC;
+  --shadow: 0 1px 2px rgba(42,39,36,0.06);
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 24px 100px;
+}
+
+/* ---------- Header ---------- */
+
+header.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 3px solid var(--ink);
+  padding-bottom: 18px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.masthead h1 {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 2.1rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.masthead h1 em {
+  font-style: italic;
+  color: var(--blue);
+}
+
+.masthead .sub {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+.masthead .exam-chip {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.masthead .exam-chip strong {
+  display: block;
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.05rem;
+  color: var(--pink);
+  font-weight: 600;
+}
+
+.dateline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  padding: 10px 0 28px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 28px;
+}
+
+/* ---------- Section labels ---------- */
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 44px 0 16px;
+}
+
+.section-head h2 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.section-head .count {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.section-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ---------- Week table ---------- */
+
+.week-table {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+.day-row {
+  display: grid;
+  grid-template-columns: 108px 1fr 1fr 96px 100px 40px;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.15s ease;
+}
+
+.day-row:last-child { border-bottom: none; }
+
+.day-row.is-done { background: var(--green-soft); }
+
+.day-row > div {
+  padding: 14px 14px;
+  border-right: 1px solid var(--rule);
+}
+
+.day-row > div:last-child { border-right: none; }
+
+.col-head {
+  background: var(--paper-dim);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  font-weight: 600;
+  padding: 10px 14px !important;
+}
+
+.col-day {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col-day .dow { color: var(--ink); }
+.col-day .today-flag {
+  font-size: 0.68rem;
+  color: var(--pink);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.col-libro { color: var(--blue); border-left: 3px solid var(--blue-soft); }
+.col-quaderno { color: var(--pink); border-left: 3px solid var(--pink-soft); }
+
+.col-libro, .col-quaderno {
+  font-size: 0.84rem;
+  color: var(--ink);
+  white-space: pre-line;
+}
+
+.tag-line {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+.col-libro .tag-line { color: var(--blue); }
+.col-quaderno .tag-line { color: var(--pink); }
+
+.col-pimsleur, .col-anki {
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.col-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Mini checkbox pro Baustein ---------- */
+
+.mini-check {
+  width: 17px;
+  height: 17px;
+  min-width: 17px;
+  border: 2px solid var(--rule);
+  border-radius: 3px;
+  cursor: pointer;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.mini-check.checked {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.mini-check svg { display: none; width: 11px; height: 11px; }
+.mini-check.checked svg { display: block; }
+
+.col-libro.item-done, .col-quaderno.item-done {
+  text-decoration: line-through;
+  text-decoration-color: var(--rule);
+  opacity: 0.62;
+}
+.col-pimsleur.item-done span:first-child,
+.col-anki.item-done span:first-child {
+  text-decoration: line-through;
+  text-decoration-color: var(--rule);
+  opacity: 0.62;
+}
+
+.check-box {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.check-box.checked {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.check-box svg { display: none; width: 14px; height: 14px; }
+.check-box.checked svg { display: block; }
+
+.note-field {
+  grid-column: 1 / -1;
+  padding: 0 14px 12px 14px !important;
+  border-right: none !important;
+}
+
+.note-input {
+  width: 100%;
+  border: none;
+  border-top: 1px dashed var(--rule);
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  padding: 8px 0 0;
+  resize: none;
+  font-style: italic;
+}
+.note-input:focus { outline: none; color: var(--ink); }
+.note-input::placeholder { color: #B5AFA2; }
+
+/* ---------- Progress cards ---------- */
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.progress-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.progress-card h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.98rem;
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.progress-card .pos {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  min-height: 34px;
+}
+
+.bar-track {
+  height: 7px;
+  background: var(--paper-dim);
+  border-radius: 4px;
+  margin: 12px 0 6px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.progress-card:nth-child(2) .bar-fill { background: var(--pink); }
+.progress-card:nth-child(3) .bar-fill { background: var(--amber); }
+.progress-card:nth-child(4) .bar-fill { background: var(--green); }
+
+.bar-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+.bar-meta strong { color: var(--ink); }
+
+.progress-card input.pos-edit {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+}
+.progress-card input.pos-edit:focus { outline: none; color: var(--ink); }
+
+.progress-card input.pct-edit {
+  width: 44px;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.75rem;
+  text-align: right;
+}
+.progress-card input.pct-edit:focus { outline: none; border-color: var(--blue); }
+
+/* ---------- Toolbar ---------- */
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+button.btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+button.btn:hover { opacity: 0.82; }
+
+button.btn.secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+button.btn.secondary:hover { background: var(--paper-dim); opacity: 1; }
+
+button.btn.danger {
+  background: transparent;
+  color: var(--pink);
+  border: 1px solid var(--pink-soft);
+}
+button.btn.danger:hover { background: var(--pink-soft); opacity: 1; }
+
+input[type="file"] { display: none; }
+
+/* ---------- Import panel ---------- */
+
+.import-panel {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.import-panel p {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+
+.import-panel textarea {
+  width: 100%;
+  min-height: 140px;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.78rem;
+  padding: 12px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-dim);
+  color: var(--ink);
+  resize: vertical;
+}
+
+.import-panel textarea:focus { outline: none; border-color: var(--blue); }
+
+.import-status {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  display: none;
+}
+.import-status.show { display: block; }
+.import-status.ok { background: var(--green-soft); color: var(--green); }
+.import-status.err { background: var(--pink-soft); color: var(--pink); }
+
+details.import-details summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding: 4px 0;
+}
+details.import-details summary:hover { color: var(--ink); }
+details.import-details[open] summary { margin-bottom: 12px; }
+
+/* ---------- Report modal ---------- */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(42,39,36,0.45);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.show { display: flex; }
+
+.modal {
+  background: var(--paper);
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal h2 {
+  font-family: 'Source Serif 4', serif;
+  margin-top: 0;
+}
+
+.modal .modal-close {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  line-height: 1;
+}
+
+#reportBody { font-size: 0.88rem; }
+#reportBody h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+  margin: 20px 0 8px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 4px;
+}
+#reportBody ul { margin: 0; padding-left: 18px; }
+#reportBody li { margin-bottom: 6px; }
+#reportBody .stat-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-size: 0.85rem;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 800px) {
+  .day-row {
+    grid-template-columns: 1fr;
+  }
+  .day-row > div { border-right: none; border-bottom: 1px solid var(--rule); }
+  .day-row > div:last-child { border-bottom: none; }
+  .col-head { display: none; }
+  .col-day::before { content: none; }
+  .col-check { justify-content: flex-start; padding-top: 6px !important; }
+  .col-check::before {
+    content: "Erledigt";
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-right: 10px;
+    font-weight: 600;
+  }
+}
+/* ---------- Phasen-Übersicht ---------- */
+
+.phase-bar {
+  display: flex;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+.phase-seg {
+  flex: 1;
+  padding: 16px 18px;
+  position: relative;
+  border-right: 1px solid var(--rule);
+}
+.phase-seg:last-child { border-right: none; }
+
+.phase-seg.is-active {
+  background: var(--blue-soft);
+}
+
+.phase-seg .phase-name {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin: 0 0 3px;
+}
+
+.phase-seg.is-active .phase-name { color: var(--blue); }
+
+.phase-seg .phase-weeks {
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.phase-seg .phase-track {
+  height: 5px;
+  background: var(--paper-dim);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.phase-seg .phase-fill {
+  height: 100%;
+  background: var(--blue);
+}
+
+.phase-seg .phase-note {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.phase-seg .now-dot {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Streak ---------- */
+
+.streak-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.streak-flame {
+  font-size: 1rem;
+}
+
+.streak-row strong {
+  color: var(--ink);
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+}
+
+/* ---------- Backup reminder ---------- */
+
+.backup-banner {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--amber-soft);
+  border: 1px solid #E4CFA5;
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  color: #7A5A20;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.backup-banner.show { display: flex; }
+
+.backup-banner button {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  border: 1px solid #B8823A;
+  background: transparent;
+  color: #7A5A20;
+  cursor: pointer;
+}
+.backup-banner button:hover { background: #B8823A; color: #fff; }
+
+/* ---------- Verlauf ---------- */
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+
+.history-item summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.history-item summary::-webkit-details-marker { display: none; }
+
+.history-item .hist-title {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.history-item .hist-stats {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.hist-bar-track {
+  width: 90px;
+  height: 6px;
+  background: var(--paper-dim);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.hist-bar-fill { height: 100%; background: var(--green); }
+
+.history-item .hist-days {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule);
+  font-size: 0.8rem;
+  display: grid;
+  gap: 6px;
+}
+
+.hist-day-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--ink-soft);
+}
+.hist-day-row strong { color: var(--ink); font-weight: 600; min-width: 80px; }
+
+.empty-note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  padding: 18px;
+  text-align: center;
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius);
+}
+
+/* ---------- Mini chart (Wochen-Erledigungsquote) ---------- */
+
+.trend-chart {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  min-height: 140px;
+}
+
+.trend-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.trend-bar-track {
+  width: 100%;
+  max-width: 34px;
+  height: 90px;
+  display: flex;
+  align-items: flex-end;
+  background: var(--paper-dim);
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.trend-bar-fill {
+  width: 100%;
+  background: var(--blue);
+  border-radius: 3px 3px 0 0;
+}
+
+.trend-bar-label {
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.trend-bar-pct {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ---------- Reverso-Link in Notizen ---------- */
+
+.reverso-hint {
+  font-size: 0.7rem;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--blue);
+  margin-left: 6px;
+}
+.reverso-hint:hover { color: var(--pink); border-color: var(--pink); }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div>
+      <h1>Studio <em>Italiano</em></h1>
+      <div class="sub">Wochenplan &amp; Fortschritt · CILS UNO&#8209;B1</div>
+    </div>
+    <div class="exam-chip">
+      Prüfung
+      <strong id="examDate">3. Dez. 2026</strong>
+    </div>
+  </header>
+
+  <div class="dateline">
+    <span id="weekRange">Woche: 07.09. – 13.09.2026</span>
+    <span id="daysToExam">— Tage bis zur Prüfung</span>
+  </div>
+
+  <div class="backup-banner" id="backupBanner">
+    <span id="backupBannerText">Letztes Backup ist eine Weile her.</span>
+    <button id="btnBackupNow">Jetzt exportieren</button>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <h2>Phasen</h2>
+      <span class="count" id="phaseWeekLabel">Woche 1 von 14</span>
+    </div>
+    <div class="phase-bar" id="phaseBar"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Diese Woche</h2>
+      <span class="count" id="weekDoneCount">0 / 7 Tage erledigt</span>
+    </div>
+
+    <div class="week-table" id="weekTable">
+      <div class="day-row">
+        <div class="col-head">Tag</div>
+        <div class="col-head">Libro</div>
+        <div class="col-head">Quaderno</div>
+        <div class="col-head">Pimsleur</div>
+        <div class="col-head">Anki</div>
+        <div class="col-head">✓</div>
+      </div>
+      <!-- Tage werden per JS eingefügt -->
+    </div>
+
+    <div class="toolbar" style="justify-content: space-between; align-items: center;">
+      <div class="toolbar" style="margin:0;">
+        <button class="btn" id="btnGenerateReport">Wochenbericht erstellen</button>
+        <button class="btn secondary" id="btnExportJson">Stand exportieren (Backup)</button>
+        <button class="btn secondary" id="btnShowImport">Neuen Wochenplan einfügen</button>
+      </div>
+      <div class="streak-row" id="streakRow"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Trend</h2>
+      <span class="count">Erledigungsquote pro Woche</span>
+    </div>
+    <div class="trend-chart" id="trendChart"></div>
+  </section>
+
+
+  <section id="importSection" style="display:none;">
+    <div class="section-head">
+      <h2>Neuen Plan übernehmen</h2>
+    </div>
+    <div class="import-panel">
+      <p>
+        So geht's: Lade deine neue Wochenplan-PDF oder -Excel im Chat bei Claude hoch und schreib
+        „baue mir daraus die JSON-Wochendaten für mein Studio Italiano". Füge das Ergebnis unten ein
+        und klicke „Übernehmen" — dein Plan, deine Häkchen und Notizen für vergangene Wochen bleiben erhalten.
+      </p>
+      <textarea id="importTextarea" placeholder='{"weekLabel": "...", "examDate": "...", "days": [...]}'></textarea>
+      <div class="toolbar">
+        <button class="btn" id="btnApplyImport">Übernehmen</button>
+        <button class="btn secondary" id="btnCancelImport">Abbrechen</button>
+        <label class="btn secondary" for="fileInputJson" style="cursor:pointer;">Datei wählen…</label>
+        <input type="file" id="fileInputJson" accept="application/json,.json">
+      </div>
+      <div class="import-status" id="importStatus"></div>
+      <details class="import-details" style="margin-top:16px;">
+        <summary>Referenz-PDF stattdessen nur anzeigen (ohne Datenänderung)</summary>
+        <div class="toolbar">
+          <label class="btn secondary" for="fileInputPdf" style="cursor:pointer;">PDF wählen…</label>
+          <input type="file" id="fileInputPdf" accept="application/pdf">
+        </div>
+        <div id="pdfViewerWrap" style="margin-top:14px;"></div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Positions-Tracker</h2>
+      <span class="count">wo stehst du gerade?</span>
+    </div>
+    <div class="progress-grid" id="progressGrid"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Verlauf</h2>
+      <span class="count" id="historyCount">0 Wochen</span>
+    </div>
+    <div class="history-list" id="historyList"></div>
+  </section>
+
+  <footer>
+    Studio Italiano · ffluencyy-Methodik · Daten werden lokal in diesem Browser gespeichert.
+    Für ein Backup: „Stand exportieren" nutzen.
+  </footer>
+
+</div>
+
+<div class="modal-overlay" id="reportOverlay">
+  <div class="modal">
+    <button class="modal-close" id="reportClose">&times;</button>
+    <h2>Wochenbericht</h2>
+    <div id="reportBody"></div>
+    <div class="toolbar" style="margin-top:20px;">
+      <button class="btn" id="btnDownloadReport">Als Textdatei herunterladen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ======================================================================
+   DATENMODELL
+   ====================================================================== */
+
+const STORAGE_KEY = 'studioItaliano_v1';
+
+const DEFAULT_DATA = {
+  weekLabel: "07.09. – 13.09.2026",
+  weekNumber: 1,
+  examDate: "2026-12-03",
+  examDateDisplay: "3. Dez. 2026",
+  lastBackupAt: null,
+  phases: [
+    { name: "Phase 1 · Fundament", weeks: "Woche 1–7", weekStart: 1, weekEnd: 7, note: "Progetto 1 (Libro + Quaderno)" },
+    { name: "Phase 2 · Prüfungsformat", weeks: "Woche 8–11", weekStart: 8, weekEnd: 11, note: "Percorso CILS + Progetto 2, Preply-Sessions" },
+    { name: "Phase 3 · Endspurt", weeks: "Woche 12–14", weekStart: 12, weekEnd: 14, note: "Feinschliff vor der Prüfung am 3. Dez." }
+  ],
+  days: [
+    {
+      dow: "Mo", date: "07.09.",
+      libro: "Unità 1, Abschnitt F: Übung 3–6 (S.19–22)\n→ Ende Unità 1 (Autovalutazione folgt erst nach Unità 2)",
+      quaderno: "Unità introduttiva: Ex.11a + 11b (S.9–10)",
+      pimsleur: "Lektion 3",
+      anki: "45 neue Karten",
+      doneItems: { libro: false, quaderno: false, pimsleur: false, anki: false }, note: ""
+    },
+    {
+      dow: "Di", date: "08.09.",
+      libro: "Landeskunde-Seite 23 lesen (kein Pflicht-Ex.)\nUnità 1 damit komplett abgeschlossen",
+      quaderno: "Unità introduttiva: Ex.12–13 (S.5–6) + Test finale A+B\n→ Unità introduttiva damit fertig",
+      pimsleur: "Lektion 4",
+      anki: "45 neue Karten",
+      doneItems: { libro: false, quaderno: false, pimsleur: false, anki: false }, note: ""
+    },
+    {
+      dow: "Mi", date: "09.09.",
+      libro: "Unità 2, Abschnitt A (S.25–26)",
+      quaderno: "Unità 1: Ex.1–4 (S.7–8)\n→ jetzt offiziell Unità 1 im Quaderno gestartet",
+      pimsleur: "Lektion 5",
+      anki: "45 neue Karten",
+      doneItems: { libro: false, quaderno: false, pimsleur: false, anki: false }, note: ""
+    },
+    {
+      dow: "Do", date: "10.09.",
+      libro: "Unità 2 weiter, S.27–28 (unregelmäßige Verben)",
+      quaderno: "Unità 1: Ex.5–7 (S.8–9)",
+      pimsleur: "Lektion 6",
+      anki: "45 neue Karten",
+      doneItems: { libro: false, quaderno: false, pimsleur: false, anki: false }, note: ""
+    },
+    {
+      dow: "Fr", date: "11.09.",
+      libro: "Unità 2, nächster Abschnitt",
+      quaderno: "Unità 1: Ex.8–10 + Test finale (S.10–12)\n→ Unità 1 im Quaderno fertig",
+      pimsleur: "Lektion 7",
+      anki: "45 neue Karten",
+      doneItems: { libro: false, quaderno: false, pimsleur: false, anki: false }, note: ""
+    },
+    {
+      dow: "Sa", date: "12.09.",
+      libro: "Unità 2 weiter nach Kapazität\n+ Wiederholung: Woche handschriftlich durchgehen, Farbcode prüfen",
+      quaderno: "Puffertag / Wiederholung",
+      pimsleur: "Lektion 8",
+      anki: "45 neue Karten",
+      doneItems: { libro: false, quaderno: false, pimsleur: false, anki: false }, note: ""
+    },
+    {
+      dow: "So", date: "13.09.",
+      libro: "Wochenrückblick: was fehlt, was war zu viel?",
+      quaderno: "Unità 2: Ex.1–3 anfangen (falls Libro-Stoff so weit ist)",
+      pimsleur: "Lektion 9",
+      anki: "45 neue Karten",
+      doneItems: { libro: false, quaderno: false, pimsleur: false, anki: false }, note: ""
+    }
+  ],
+  progress: [
+    { key: "libro", label: "Libro (Progetto 1)", pos: "Unità 1, S.19, Abschnitt F Ex.3", pct: 10 },
+    { key: "quaderno", label: "Quaderno (Progetto 1)", pos: "Unità introduttiva, S.8, nach Ex.10b", pct: 4 },
+    { key: "pimsleur", label: "Pimsleur Level 3", pos: "Lektion 2 abgeschlossen (heute Lekt.3)", pct: 7 },
+    { key: "anki", label: "Anki (Pimsleur-Deck)", pos: "laufend – 45 neue Karten/Tag", pct: null }
+  ],
+  history: []  // abgeschlossene Wochen für Reports, {weekLabel, savedAt, days snapshot}
+};
+
+let state = loadState();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      migrateState(parsed);
+      return parsed;
+    }
+  } catch (e) { console.warn('Konnte gespeicherten Stand nicht laden', e); }
+  return structuredClone(DEFAULT_DATA);
+}
+
+// Alte Stände (ein einziges "done" pro Tag) auf das neue Format
+// mit einem Häkchen pro Baustein (Libro/Quaderno/Pimsleur/Anki) heben.
+function migrateState(data) {
+  if (!data.phases) data.phases = structuredClone(DEFAULT_DATA.phases);
+  if (!data.weekNumber) data.weekNumber = 1;
+  if (data.lastBackupAt === undefined) data.lastBackupAt = null;
+  if (!data.days) return;
+  data.days.forEach(day => {
+    if (!day.doneItems) {
+      const wasDone = !!day.done;
+      day.doneItems = { libro: wasDone, quaderno: wasDone, pimsleur: wasDone, anki: wasDone };
+    }
+    delete day.done;
+  });
+  (data.history || []).forEach(week => {
+    (week.days || []).forEach(day => {
+      if (!day.doneItems) {
+        const wasDone = !!day.done;
+        day.doneItems = { libro: wasDone, quaderno: wasDone, pimsleur: wasDone, anki: wasDone };
+      }
+      delete day.done;
+    });
+  });
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+/* ======================================================================
+   RENDERING
+   ====================================================================== */
+
+function render() {
+  document.getElementById('weekRange').textContent = 'Woche: ' + state.weekLabel;
+  document.getElementById('examDate').textContent = state.examDateDisplay || formatDate(state.examDate);
+  renderCountdown();
+  renderPhases();
+  renderWeekTable();
+  renderProgress();
+  renderStreak();
+  renderTrendChart();
+  renderHistory();
+  renderBackupBanner();
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function renderCountdown() {
+  if (!state.examDate) { document.getElementById('daysToExam').textContent = ''; return; }
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const exam = new Date(state.examDate);
+  const diff = Math.ceil((exam - today) / (1000*60*60*24));
+  const el = document.getElementById('daysToExam');
+  if (diff > 0) el.textContent = `noch ${diff} Tage bis zur Prüfung`;
+  else if (diff === 0) el.textContent = 'Prüfungstag ist heute';
+  else el.textContent = 'Prüfungstermin liegt in der Vergangenheit';
+}
+
+function renderPhases() {
+  const wrap = document.getElementById('phaseBar');
+  const wn = state.weekNumber || 1;
+  const totalWeeks = state.phases.reduce((max, p) => Math.max(max, p.weekEnd), 14);
+  document.getElementById('phaseWeekLabel').textContent = `Woche ${wn} von ${totalWeeks}`;
+
+  wrap.innerHTML = state.phases.map(p => {
+    const isActive = wn >= p.weekStart && wn <= p.weekEnd;
+    const span = p.weekEnd - p.weekStart + 1;
+    let fillPct = 0;
+    if (wn > p.weekEnd) fillPct = 100;
+    else if (wn >= p.weekStart) fillPct = Math.round(((wn - p.weekStart + 1) / span) * 100);
+    return `
+      <div class="phase-seg${isActive ? ' is-active' : ''}">
+        ${isActive ? '<span class="now-dot">Jetzt</span>' : ''}
+        <div class="phase-name">${escapeHtml(p.name)}</div>
+        <div class="phase-weeks">${escapeHtml(p.weeks)}</div>
+        <div class="phase-track"><div class="phase-fill" style="width:${fillPct}%"></div></div>
+        <div class="phase-note">${escapeHtml(p.note)}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+const ITEM_KEYS = ['libro', 'quaderno', 'pimsleur', 'anki'];
+
+function miniCheckSvg() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+}
+
+function isDayComplete(day) {
+  return ITEM_KEYS.every(k => day.doneItems && day.doneItems[k]);
+}
+
+function renderWeekTable() {
+  const table = document.getElementById('weekTable');
+  // Kopfzeile behalten, Rest neu bauen
+  const header = table.querySelector('.day-row');
+  table.innerHTML = '';
+  table.appendChild(header);
+
+  let doneCount = 0;
+
+  state.days.forEach((day, idx) => {
+    const complete = isDayComplete(day);
+    if (complete) doneCount++;
+    const di = day.doneItems || {};
+
+    const row = document.createElement('div');
+    row.className = 'day-row' + (complete ? ' is-done' : '');
+
+    row.innerHTML = `
+      <div class="col-day">
+        <span class="dow">${day.dow} ${day.date}</span>
+        ${isToday(day.date) ? '<span class="today-flag">Heute</span>' : ''}
+      </div>
+      <div class="col-libro${di.libro ? ' item-done' : ''}">
+        <span class="tag-line">
+          Libro
+          <button class="mini-check${di.libro ? ' checked' : ''}" data-idx="${idx}" data-key="libro" aria-label="Libro erledigt">${miniCheckSvg()}</button>
+        </span>
+        ${escapeHtml(day.libro)}
+      </div>
+      <div class="col-quaderno${di.quaderno ? ' item-done' : ''}">
+        <span class="tag-line">
+          Quaderno
+          <button class="mini-check${di.quaderno ? ' checked' : ''}" data-idx="${idx}" data-key="quaderno" aria-label="Quaderno erledigt">${miniCheckSvg()}</button>
+        </span>
+        ${escapeHtml(day.quaderno)}
+      </div>
+      <div class="col-pimsleur${di.pimsleur ? ' item-done' : ''}">
+        <span>${escapeHtml(day.pimsleur)}</span>
+        <button class="mini-check${di.pimsleur ? ' checked' : ''}" data-idx="${idx}" data-key="pimsleur" aria-label="Pimsleur erledigt">${miniCheckSvg()}</button>
+      </div>
+      <div class="col-anki${di.anki ? ' item-done' : ''}">
+        <span>${escapeHtml(day.anki)}</span>
+        <button class="mini-check${di.anki ? ' checked' : ''}" data-idx="${idx}" data-key="anki" aria-label="Anki erledigt">${miniCheckSvg()}</button>
+      </div>
+      <div class="col-check">
+        <button class="check-box${complete ? ' checked' : ''}" data-idx="${idx}" data-key="all" aria-label="Tag komplett erledigt">
+          ${miniCheckSvg()}
+        </button>
+      </div>
+      <div class="note-field">
+        <textarea class="note-input" rows="1" data-idx="${idx}" placeholder="Notiz zu diesem Tag …">${escapeHtml(day.note || '')}</textarea>
+        <a class="reverso-hint" href="https://conjugator.reverso.net/conjugation-italian.html" target="_blank" rel="noopener">Verb bei Reverso nachschlagen ↗</a>
+      </div>
+    `;
+    table.appendChild(row);
+  });
+
+  document.getElementById('weekDoneCount').textContent = `${doneCount} / ${state.days.length} Tage komplett erledigt`;
+
+  table.querySelectorAll('.mini-check').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = +btn.dataset.idx;
+      const key = btn.dataset.key;
+      const day = state.days[idx];
+      if (!day.doneItems) day.doneItems = { libro: false, quaderno: false, pimsleur: false, anki: false };
+      day.doneItems[key] = !day.doneItems[key];
+      saveState();
+      renderWeekTable();
+    });
+  });
+
+  table.querySelectorAll('.check-box').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = +btn.dataset.idx;
+      const day = state.days[idx];
+      if (!day.doneItems) day.doneItems = { libro: false, quaderno: false, pimsleur: false, anki: false };
+      const nowComplete = !isDayComplete(day);
+      ITEM_KEYS.forEach(k => day.doneItems[k] = nowComplete);
+      saveState();
+      renderWeekTable();
+    });
+  });
+
+  table.querySelectorAll('.note-input').forEach(ta => {
+    autoGrow(ta);
+    ta.addEventListener('input', () => {
+      const idx = +ta.dataset.idx;
+      state.days[idx].note = ta.value;
+      autoGrow(ta);
+      saveState();
+    });
+  });
+}
+
+function autoGrow(ta) {
+  ta.style.height = 'auto';
+  ta.style.height = (ta.scrollHeight) + 'px';
+}
+
+function isToday(ddmm) {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2,'0');
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  return ddmm === `${dd}.${mm}.`;
+}
+
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML.replace(/\n/g, '<br>');
+}
+
+function renderProgress() {
+  const grid = document.getElementById('progressGrid');
+  grid.innerHTML = '';
+  state.progress.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'progress-card';
+    const hasPct = item.pct !== null && item.pct !== undefined;
+    card.innerHTML = `
+      <h3>${escapeHtml(item.label)}</h3>
+      <div class="pos"><input class="pos-edit" data-idx="${idx}" value="${escapeHtml(item.pos)}"></div>
+      ${hasPct ? `
+        <div class="bar-track"><div class="bar-fill" style="width:${item.pct}%"></div></div>
+        <div class="bar-meta">
+          <span>Fortschritt</span>
+          <span><input class="pct-edit" data-idx="${idx}" type="number" min="0" max="100" value="${item.pct}">%</span>
+        </div>
+      ` : `<div class="bar-meta"><span>laufend</span></div>`}
+    `;
+    grid.appendChild(card);
+  });
+
+  grid.querySelectorAll('.pos-edit').forEach(inp => {
+    inp.addEventListener('change', () => {
+      state.progress[+inp.dataset.idx].pos = inp.value;
+      saveState();
+    });
+  });
+  grid.querySelectorAll('.pct-edit').forEach(inp => {
+    inp.addEventListener('change', () => {
+      let val = Math.max(0, Math.min(100, +inp.value || 0));
+      state.progress[+inp.dataset.idx].pct = val;
+      saveState();
+      renderProgress();
+    });
+  });
+}
+
+/* ---------- Streak ---------- */
+
+function renderStreak() {
+  // Streak = Anzahl aufeinanderfolgender komplett erledigter Tage,
+  // rückwärts ab dem letzten Tag mit mindestens einem Häkchen gezählt.
+  const days = state.days;
+  let streak = 0;
+  for (let i = days.length - 1; i >= 0; i--) {
+    if (isDayComplete(days[i])) streak++;
+    else break;
+  }
+  const el = document.getElementById('streakRow');
+  if (streak === 0) {
+    el.innerHTML = `<span>Noch keine Serie diese Woche — leg los!</span>`;
+  } else {
+    el.innerHTML = `<span class="streak-flame">🔥</span> <strong>${streak}</strong> <span>Tag${streak === 1 ? '' : 'e'} in Folge komplett</span>`;
+  }
+}
+
+/* ---------- Trend-Chart (Wochen-Erledigungsquote) ---------- */
+
+function weekCompletionPct(days) {
+  const total = days.length * ITEM_KEYS.length;
+  if (!total) return 0;
+  const done = days.reduce((sum, d) => sum + ITEM_KEYS.filter(k => d.doneItems && d.doneItems[k]).length, 0);
+  return Math.round((done / total) * 100);
+}
+
+function renderTrendChart() {
+  const chart = document.getElementById('trendChart');
+  const pastWeeks = state.history.slice(-5).map(w => ({
+    label: w.weekLabel.split('–')[0].trim().slice(0, 6),
+    pct: weekCompletionPct(w.days)
+  }));
+  const currentWeek = { label: 'Diese\nWoche', pct: weekCompletionPct(state.days) };
+  const bars = [...pastWeeks, currentWeek];
+
+  if (bars.length <= 1) {
+    chart.innerHTML = `<div class="empty-note" style="width:100%;">Sobald du mehrere Wochen abgeschlossen hast, siehst du hier den Trend deiner Erledigungsquote.</div>`;
+    return;
+  }
+
+  chart.innerHTML = bars.map((b, i) => {
+    const isCurrent = i === bars.length - 1;
+    return `
+      <div class="trend-bar-col">
+        <div class="trend-bar-pct">${b.pct}%</div>
+        <div class="trend-bar-track">
+          <div class="trend-bar-fill" style="height:${b.pct}%; ${isCurrent ? 'background:var(--pink);' : ''}"></div>
+        </div>
+        <div class="trend-bar-label">${escapeHtml(b.label)}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ---------- Verlauf ---------- */
+
+function renderHistory() {
+  const list = document.getElementById('historyList');
+  document.getElementById('historyCount').textContent = `${state.history.length} Woche${state.history.length === 1 ? '' : 'n'}`;
+
+  if (!state.history.length) {
+    list.innerHTML = `<div class="empty-note">Noch keine abgeschlossene Woche im Verlauf. Sobald du einen neuen Wochenplan einfügst, wird die aktuelle Woche hier archiviert.</div>`;
+    return;
+  }
+
+  const sorted = [...state.history].reverse();
+  list.innerHTML = sorted.map(week => {
+    const pct = weekCompletionPct(week.days);
+    const completeDays = week.days.filter(isDayComplete).length;
+    const notesDays = week.days.filter(d => d.note && d.note.trim());
+    return `
+      <details class="history-item">
+        <summary>
+          <span class="hist-title">${escapeHtml(week.weekLabel)}</span>
+          <span class="hist-stats">
+            <span>${completeDays} / ${week.days.length} Tage komplett</span>
+            <div class="hist-bar-track"><div class="hist-bar-fill" style="width:${pct}%"></div></div>
+            <span>${pct}%</span>
+          </span>
+        </summary>
+        <div class="hist-days">
+          ${week.days.map(d => `
+            <div class="hist-day-row">
+              <strong>${escapeHtml(d.dow)} ${escapeHtml(d.date)}</strong>
+              <span>${ITEM_KEYS.map(k => `${(d.doneItems && d.doneItems[k]) ? '✓' : '○'} ${ITEM_LABELS[k]}`).join(' · ')}</span>
+            </div>
+          `).join('')}
+          ${notesDays.length ? `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--rule);">
+            ${notesDays.map(d => `<div class="hist-day-row"><strong>${escapeHtml(d.dow)}</strong><span style="font-style:italic;">${escapeHtml(d.note)}</span></div>`).join('')}
+          </div>` : ''}
+        </div>
+      </details>
+    `;
+  }).join('');
+}
+
+/* ---------- Backup-Reminder ---------- */
+
+function renderBackupBanner() {
+  const banner = document.getElementById('backupBanner');
+  const textEl = document.getElementById('backupBannerText');
+  if (!state.lastBackupAt) {
+    banner.classList.add('show');
+    textEl.textContent = 'Noch kein Backup exportiert. Dein Fortschritt liegt nur in diesem Browser.';
+    return;
+  }
+  const daysSince = Math.floor((Date.now() - new Date(state.lastBackupAt).getTime()) / (1000*60*60*24));
+  if (daysSince >= 7) {
+    banner.classList.add('show');
+    textEl.textContent = `Letztes Backup vor ${daysSince} Tagen. Zeit für ein neues Backup.`;
+  } else {
+    banner.classList.remove('show');
+  }
+}
+
+/* ======================================================================
+   IMPORT NEUER WOCHENPLAN
+   ====================================================================== */
+
+document.getElementById('btnShowImport').addEventListener('click', () => {
+  document.getElementById('importSection').style.display = 'block';
+  document.getElementById('importSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('btnCancelImport').addEventListener('click', () => {
+  document.getElementById('importSection').style.display = 'none';
+});
+
+document.getElementById('fileInputJson').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    document.getElementById('importTextarea').value = reader.result;
+  };
+  reader.readAsText(file);
+});
+
+document.getElementById('btnApplyImport').addEventListener('click', () => {
+  const raw = document.getElementById('importTextarea').value.trim();
+  const statusEl = document.getElementById('importStatus');
+  if (!raw) {
+    showImportStatus('Bitte zuerst Daten einfügen oder eine Datei wählen.', false);
+    return;
+  }
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (e) {
+    let detail = e.message;
+    const posMatch = detail.match(/position (\d+)/);
+    if (posMatch) {
+      const pos = +posMatch[1];
+      const before = raw.slice(0, pos);
+      const line = (before.match(/\n/g) || []).length + 1;
+      const col = pos - before.lastIndexOf('\n');
+      const snippet = raw.slice(Math.max(0, pos - 20), pos + 20);
+      showImportStatus(
+        `JSON-Fehler in Zeile ${line}, Spalte ${col}: „…${snippet}…". ` +
+        `Bitte den Text unverändert von Claude übernehmen, oder Claude bitten, das JSON nochmal zu prüfen.`,
+        false
+      );
+    } else {
+      showImportStatus(`Das sieht nicht nach gültigem JSON aus (${detail}). Bitte den Text unverändert von Claude übernehmen.`, false);
+    }
+    return;
+  }
+
+  if (!parsed.days || !Array.isArray(parsed.days) || parsed.days.length === 0) {
+    showImportStatus('Die Daten enthalten kein "days"-Array. Bitte Claude nochmal um das richtige Format bitten.', false);
+    return;
+  }
+
+  // aktuelle Woche ins Verlauf sichern, bevor überschrieben wird
+  const hadProgress = state.days.some(d => d.note || (d.doneItems && ITEM_KEYS.some(k => d.doneItems[k])));
+  if (hadProgress) {
+    state.history.push({
+      weekLabel: state.weekLabel,
+      savedAt: new Date().toISOString(),
+      days: structuredClone(state.days)
+    });
+  }
+
+  state.weekLabel = parsed.weekLabel || state.weekLabel;
+  if (parsed.weekNumber) state.weekNumber = parsed.weekNumber;
+  if (parsed.examDate) state.examDate = parsed.examDate;
+  if (parsed.examDateDisplay) state.examDateDisplay = parsed.examDateDisplay;
+  state.days = parsed.days.map(d => ({
+    dow: d.dow || '', date: d.date || '',
+    libro: d.libro || '', quaderno: d.quaderno || '',
+    pimsleur: d.pimsleur || '', anki: d.anki || '',
+    doneItems: { libro: false, quaderno: false, pimsleur: false, anki: false }, note: ''
+  }));
+  if (parsed.progress && Array.isArray(parsed.progress)) {
+    state.progress = parsed.progress;
+  }
+
+  saveState();
+  render();
+  showImportStatus('Neuer Wochenplan übernommen. Die alte Woche wurde im Verlauf gesichert.', true);
+  document.getElementById('importTextarea').value = '';
+});
+
+function showImportStatus(msg, ok) {
+  const el = document.getElementById('importStatus');
+  el.textContent = msg;
+  el.className = 'import-status show ' + (ok ? 'ok' : 'err');
+}
+
+document.getElementById('fileInputPdf').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  document.getElementById('pdfViewerWrap').innerHTML =
+    `<iframe src="${url}" style="width:100%;height:480px;border:1px solid var(--rule);border-radius:3px;"></iframe>`;
+});
+
+/* ======================================================================
+   EXPORT (BACKUP)
+   ====================================================================== */
+
+document.getElementById('btnExportJson').addEventListener('click', () => {
+  exportBackup();
+});
+
+document.getElementById('btnBackupNow').addEventListener('click', () => {
+  exportBackup();
+});
+
+function exportBackup() {
+  state.lastBackupAt = new Date().toISOString();
+  saveState();
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `studio-italiano-backup_${todayIso()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  renderBackupBanner();
+}
+
+function todayIso() {
+  const d = new Date();
+  return d.toISOString().slice(0,10);
+}
+
+/* ======================================================================
+   WOCHENBERICHT
+   ====================================================================== */
+
+const ITEM_LABELS = { libro: 'Libro', quaderno: 'Quaderno', pimsleur: 'Pimsleur', anki: 'Anki' };
+
+function itemsDoneCount(day) {
+  return ITEM_KEYS.filter(k => day.doneItems && day.doneItems[k]).length;
+}
+
+document.getElementById('btnGenerateReport').addEventListener('click', () => {
+  const body = document.getElementById('reportBody');
+  const completeDays = state.days.filter(isDayComplete);
+  const partialDays = state.days.filter(d => !isDayComplete(d) && itemsDoneCount(d) > 0);
+  const untouchedDays = state.days.filter(d => itemsDoneCount(d) === 0);
+  const notesDays = state.days.filter(d => d.note && d.note.trim());
+
+  const totalItems = state.days.length * ITEM_KEYS.length;
+  const doneItemsTotal = state.days.reduce((sum, d) => sum + itemsDoneCount(d), 0);
+
+  let html = `
+    <div class="stat-line"><span>Woche</span><strong>${escapeHtml(state.weekLabel)}</strong></div>
+    <div class="stat-line"><span>Tage komplett erledigt</span><strong>${completeDays.length} / ${state.days.length}</strong></div>
+    <div class="stat-line"><span>Bausteine erledigt</span><strong>${doneItemsTotal} / ${totalItems}</strong></div>
+  `;
+
+  function dayItemsLine(d) {
+    return ITEM_KEYS.map(k => {
+      const on = d.doneItems && d.doneItems[k];
+      return `${on ? '✓' : '○'} ${ITEM_LABELS[k]}`;
+    }).join(' · ');
+  }
+
+  html += `<h3>Komplett erledigte Tage</h3>`;
+  html += completeDays.length
+    ? '<ul>' + completeDays.map(d => `<li><strong>${d.dow} ${d.date}</strong> — ${dayItemsLine(d)}</li>`).join('') + '</ul>'
+    : '<p style="color:var(--ink-soft);font-size:0.85rem;">Noch kein Tag komplett abgeschlossen.</p>';
+
+  if (partialDays.length) {
+    html += `<h3>Teilweise erledigt</h3><ul>` + partialDays.map(d => `<li><strong>${d.dow} ${d.date}</strong> — ${dayItemsLine(d)}</li>`).join('') + '</ul>';
+  }
+
+  html += `<h3>Noch nicht begonnen</h3>`;
+  html += untouchedDays.length
+    ? '<ul>' + untouchedDays.map(d => `<li>${d.dow} ${d.date} — Libro: ${escapeHtml((d.libro||'').split('\n')[0])}</li>`).join('') + '</ul>'
+    : '<p style="color:var(--ink-soft);font-size:0.85rem;">Jeder Tag hat schon mindestens einen Baustein. 🎉</p>';
+
+  if (notesDays.length) {
+    html += `<h3>Notizen der Woche</h3><ul>` + notesDays.map(d => `<li><strong>${d.dow} ${d.date}:</strong> ${escapeHtml(d.note)}</li>`).join('') + '</ul>';
+  }
+
+  html += `<h3>Positions-Tracker (Stand heute)</h3><ul>`;
+  state.progress.forEach(p => {
+    html += `<li>${escapeHtml(p.label)}: ${escapeHtml(p.pos)}${p.pct !== null && p.pct !== undefined ? ` (${p.pct}%)` : ''}</li>`;
+  });
+  html += `</ul>`;
+
+  body.innerHTML = html;
+  document.getElementById('reportOverlay').classList.add('show');
+});
+
+document.getElementById('reportClose').addEventListener('click', () => {
+  document.getElementById('reportOverlay').classList.remove('show');
+});
+document.getElementById('reportOverlay').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('reportOverlay')) {
+    document.getElementById('reportOverlay').classList.remove('show');
+  }
+});
+
+document.getElementById('btnDownloadReport').addEventListener('click', () => {
+  const completeDays = state.days.filter(isDayComplete);
+  const partialDays = state.days.filter(d => !isDayComplete(d) && itemsDoneCount(d) > 0);
+  const untouchedDays = state.days.filter(d => itemsDoneCount(d) === 0);
+  const notesDays = state.days.filter(d => d.note && d.note.trim());
+  const totalItems = state.days.length * ITEM_KEYS.length;
+  const doneItemsTotal = state.days.reduce((sum, d) => sum + itemsDoneCount(d), 0);
+
+  function dayItemsLineTxt(d) {
+    return ITEM_KEYS.map(k => `${(d.doneItems && d.doneItems[k]) ? '[x]' : '[ ]'} ${ITEM_LABELS[k]}`).join('  ');
+  }
+
+  let txt = `WOCHENBERICHT · Studio Italiano\n`;
+  txt += `Woche: ${state.weekLabel}\n`;
+  txt += `Erstellt am: ${new Date().toLocaleDateString('de-DE')}\n`;
+  txt += `Tage komplett erledigt: ${completeDays.length} / ${state.days.length}\n`;
+  txt += `Bausteine erledigt: ${doneItemsTotal} / ${totalItems}\n\n`;
+
+  txt += `KOMPLETT ERLEDIGTE TAGE\n`;
+  txt += completeDays.length
+    ? completeDays.map(d => `- ${d.dow} ${d.date}: ${dayItemsLineTxt(d)}`).join('\n')
+    : '(keine)';
+
+  if (partialDays.length) {
+    txt += `\n\nTEILWEISE ERLEDIGT\n`;
+    txt += partialDays.map(d => `- ${d.dow} ${d.date}: ${dayItemsLineTxt(d)}`).join('\n');
+  }
+
+  txt += `\n\nNOCH NICHT BEGONNEN\n`;
+  txt += untouchedDays.length
+    ? untouchedDays.map(d => `- ${d.dow} ${d.date}: ${(d.libro||'').split('\n')[0]}`).join('\n')
+    : '(keine)';
+
+  if (notesDays.length) {
+    txt += `\n\nNOTIZEN\n`;
+    txt += notesDays.map(d => `- ${d.dow} ${d.date}: ${d.note}`).join('\n');
+  }
+
+  txt += `\n\nPOSITIONS-TRACKER\n`;
+  state.progress.forEach(p => {
+    txt += `- ${p.label}: ${p.pos}${p.pct !== null && p.pct !== undefined ? ` (${p.pct}%)` : ''}\n`;
+  });
+
+  const blob = new Blob([txt], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `wochenbericht_${state.weekLabel.replace(/[^\d.]/g,'').slice(0,5)}_${todayIso()}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+/* ======================================================================
+   INIT
+   ====================================================================== */
+
+render();
+
+</script>
+</body>
+</html>
